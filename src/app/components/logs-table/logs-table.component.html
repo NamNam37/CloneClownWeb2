@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">User</th>
+      <th scope="col">Configuration</th>
+      <th scope="col">Creation Date</th>
+      <th scope="col">Backup Successed</th>
+      <th scope="col">Sent By Email</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let log of logs">
+      <td>{{ log.user.username }}</td>
+      <td>{{ log.config.configName }}</td>
+      <td>{{ log.date}}</td>
+      <td>{{ log.status}}</td>
+      <td>{{ log.alreadySent}}</td>
+      <td><a class="btn btn-primary">View Error Details</a></td>
+    </tr>
+  </tbody>
+</table>

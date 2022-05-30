@@ -1,0 +1,56 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <c-col>
+        <c-card class="mb-4">
+            <c-card-header>
+                <h4 cCardTitle>Username: {{user.username}}</h4>
+            </c-card-header>
+        </c-card>
+        <c-card class="mb-4">
+            <c-card-header>
+                <h5 cCardTitle>Configurations</h5>
+            </c-card-header>
+            <c-card-body>
+                <c-input-group class="mb-3">
+                    <span cInputGroupText>Configuration Name</span>
+                    <input aria-label="ConfigName" cFormControl placeholder="daily backup" #ConfigName />
+                </c-input-group>
+                <c-input-group class="mb-3">
+                    <button cButton color="primary" (click)="add(ConfigName.value)">Add</button>
+                    <button cButton color="primary" routerLink="/configs-creator">Create New Configuration</button>
+                </c-input-group>
+            </c-card-body>
+        </c-card>
+        <c-card class="mb-4">
+            <c-card-header>
+                <h5 cCardTitle>Added Configurations</h5>
+            </c-card-header>
+            <c-card-body>
+                <table cTable hover>
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Schedule</th>
+                            <th scope="col">Last Used</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let config of user.configs; index as i">
+                            <td>{{config.configName}}</td>
+                            <td>{{config.schedule}}</td>
+                            <td>{{config.last_used}}</td>
+                            <td class="buttons">
+                                <c-button-group aria-label="Basic example" role="group">
+                                    <button cButton color="danger" (click)="RemoveAt(i)">Remove</button>
+                                    <button cButton color="primary"
+                                        routerLink="/configs-editor/{{config.id}}">Edit</button>
+                                </c-button-group>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </c-card-body>
+        </c-card>
+        <button cButton color="primary" type="submit">Save</button>
+    </c-col>
+</form>

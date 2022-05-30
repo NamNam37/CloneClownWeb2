@@ -1,0 +1,34 @@
+<c-modal id="FTPModal" [visible]="visible" (visibleChange)="handleChange($event)">
+    <c-modal-header>
+        <h5 cModalTitle>Add an FTP Destination</h5>
+        <button (click)="Toggle()" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body>
+        <c-input-group class="mb-3">
+            <span cInputGroupText id="basic-addon1">Username</span>
+            <input aria-describedby="basic-addon1" aria-label="Username" cFormControl placeholder="Admin" />
+        </c-input-group>
+        <c-input-group class="mb-3">
+            <span cInputGroupText id="basic-addon1">Password</span>
+            <input aria-describedby="basic-addon1" aria-label="Username" cFormControl placeholder="*******" />
+        </c-input-group>
+        <c-input-group class="mb-3">
+            <span cInputGroupText id="basic-addon1">Server</span>
+            <input aria-describedby="basic-addon1" aria-label="Username" cFormControl placeholder="apple.com" />
+        </c-input-group>
+        <c-input-group class="mb-3">
+            <span cInputGroupText id="basic-addon1">Port</span>
+            <input aria-describedby="basic-addon1" aria-label="Username" cFormControl placeholder="default:21" />
+        </c-input-group>
+        <c-input-group class="mb-3">
+            <span cInputGroupText id="basic-addon1">Destination</span>
+            <input aria-describedby="basic-addon1" aria-label="Username" cFormControl placeholder="X:\Backups" />
+        </c-input-group>
+    </c-modal-body>
+    <c-modal-footer>
+        <button (click)="Toggle()" cButton color="secondary">
+            Close
+        </button>
+        <button cButton color="primary">Add</button>
+    </c-modal-footer>
+</c-modal>

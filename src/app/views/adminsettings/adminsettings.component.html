@@ -1,0 +1,62 @@
+<c-container>
+    <c-row>
+        <c-col>
+            <c-card>
+                <c-card-header>
+                    <h5 cCardTitle>Login Details</h5>
+                </c-card-header>
+                <c-card-body>
+                    <form cForm>
+                        <div class="mb-3">
+                            <label cLabel for="inputEmail-1">Email address</label>
+                            <input cFormControl id="inputEmail-1" type="email" placeholder="admin@cloneclown.com">
+                        </div>
+                        <div class="mb-3">
+                            <label cLabel for="inputUsername-1">Username</label>
+                            <input cFormControl id="inputUsername-1" aria-describedby="basic-addon1"
+                                aria-label="Username" placeholder="Admin" />
+                        </div>
+                        <div class="mb-3">
+                            <label cLabel for="inputPassword-1">Password</label>
+                            <input cFormControl id="inputPassword-1" type="password">
+                        </div>
+                        <button cButton color="primary">Save</button>
+                    </form>
+                </c-card-body>
+            </c-card>
+        </c-col>
+        <c-col md="6">
+            <c-card>
+                <c-card-body>
+                    <c-card>
+                        <c-card-header>
+                            <h5 cCardTitle>Profile Picture Settings</h5>
+                        </c-card-header>
+                        <c-card-body>
+                            <c-container>
+                                <c-row>
+                                    <c-col md="3">
+                                        <c-avatar cTextColor="primary" shape="rounded-1" size="xl"
+                                            src="./assets/img/avatars/3.jpg">
+                                        </c-avatar>
+                                    </c-col>
+                                    <c-col>
+                                        <label for="inputGroupFile01">Change Profile Picture</label>
+                                        <input cFormControl id="inputGroupFile01" type="file" />
+                                    </c-col>
+                                </c-row>
+                                <c-row><br></c-row>
+                                <c-row>
+                                    <c-col md="2">
+                                        <button cButton color="primary">Save</button>
+                                    </c-col>
+                                </c-row>
+                            </c-container>
+                        </c-card-body>
+                    </c-card>
+                </c-card-body>
+            </c-card>
+
+        </c-col>
+    </c-row>
+</c-container>

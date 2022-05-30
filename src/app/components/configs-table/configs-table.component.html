@@ -1,0 +1,23 @@
+<table cTable hover>
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Schedule</th>
+            <th scope="col">Last Used</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let config of configs">
+            <td>{{config.configName}}</td>
+            <td>{{config.schedule}}</td>
+            <td>{{config.last_used}}</td>
+            <td>
+                <c-button-group aria-label="Basic example" role="group">
+                    <button cButton color="danger">Remove</button>
+                    <button cButton color="primary" (click)="edit(config)">Edit</button>
+                </c-button-group>
+            </td>
+        </tr>
+    </tbody>
+</table>

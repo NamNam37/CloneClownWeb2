@@ -1,0 +1,198 @@
+<form [formGroup]="form">
+    <c-container>
+        <c-row>
+            <c-col>
+                <c-card class="mb-4">
+                    <c-card-header>
+                        <h4 cCardTitle>Configuration Name: {{config.configName}}</h4>
+                    </c-card-header>
+                </c-card>
+                <c-card class="mb-4">
+                    <c-card-header>
+                        <h5 cCardTitle>Paths</h5>
+                    </c-card-header>
+                    <c-card-body>
+                        <c-input-group class="mb-3">
+                            <input aria-label="Source" cFormControl placeholder="Source" #source />
+                            <button cButton color="primary" (click)="AddSource(source.value)">Add</button>
+                        </c-input-group>
+                        <c-input-group class="mb-3">
+                            <input aria-label="Destination" cFormControl placeholder="Destination" #dest />
+                            <button cButton color="primary" (click)="AddDest(dest.value)">Add</button>
+                        </c-input-group>
+                        <button (click)="Toggle()" cButton>Add an FTP Destination</button>
+                    </c-card-body>
+                </c-card>
+                <c-card class="mb-4">
+                    <c-card-header>
+                        <h5 cCardTitle>Configured Paths</h5>
+                    </c-card-header>
+                    <c-card-body>
+                        <table cTable hover>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Sources</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let source of config.sources; index as i">
+                                    <td>{{source.path}}</td>
+                                    <td class="buttons">
+                                        <c-button-group aria-label="Basic example" role="group">
+                                            <button cButton color="danger" (click)="RemoveSourceAt(i)">Remove</button>
+                                        </c-button-group>
+                                    </td>
+                            </tbody>
+                        </table>
+                        <table cTable hover>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Destinations</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let dest of config.dests">
+                                    <tr *ngIf="dest.type == 'local'">
+                                        <td>{{dest.path}}</td>
+                                        <td>
+                                            <c-button-group aria-label="Basic example" role="group">
+                                                <button cButton color="danger" (click)="RemoveDestById(dest.id)">Remove</button>
+                                            </c-button-group>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                        
+                        <table cTable hover>
+                            <thead>
+                                <h6>FTP Destinations</h6>
+                                <tr>
+                                    <th scope="col">a</th>
+                                    <th scope="col">b</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let dest of config.dests">
+                                    <tr *ngIf="dest.type == 'ftp'">
+                                        <td>{{dest.path}}</td>
+                                        <td>
+                                            <c-button-group aria-label="Basic example" role="group">
+                                                <button cButton color="danger" (click)="RemoveDestById(dest.id)">Remove</button>
+                                            </c-button-group>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                                <tr *ngFor="let dest of config.dests; index as i">
+                                    <td>{{dest.path}}</td>
+                                    <td>
+                                        <c-button-group aria-label="Basic example" role="group">
+                                            <button cButton color="danger" (click)="RemoveDestAt(i)">Remove</button>
+                                        </c-button-group>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </c-card-body>
+                </c-card>
+            </c-col>
+            <c-col>
+                <c-card class="mb-4">
+                    <c-card-header>
+                        <h5 cCardTitle>Schedule</h5>
+                    </c-card-header>
+                    <c-card-body>
+                        <div class="input-group mb-3">
+                            <c-input-group>
+                                <span cInputGroupText>Cron string</span>
+
+                                <input cFormControl value="{{cron1}}" #cron1el (keyup)="onChange1(cron1el.value)" />
+                                <input cFormControl value="{{cron2}}" #cron2el (keyup)="onChange2(cron2el.value)" />
+                                <input cFormControl value="{{cron3}}" #cron3el (keyup)="onChange3(cron3el.value)" />
+                                <input cFormControl value="{{cron4}}" #cron4el (keyup)="onChange4(cron4el.value)" />
+                                <input cFormControl value="{{cron5}}" #cron5el (keyup)="onChange5(cron5el.value)" />
+
+                            </c-input-group>
+                        </div>
+                    </c-card-body>
+                </c-card>
+                <c-card class="mb-4">
+                    <c-card-header>
+                        <h5 cCardTitle>Other</h5>
+                    </c-card-header>
+                    <c-card-body>
+                        <c-input-group class="mb-3">
+                            <span cInputGroupText id="basic-addon1">Configuration Name</span>
+                            <input aria-describedby="basic-addon1" aria-label="Split" placeholder="name"
+                                class="form-control" cFormControl formControlName="configName" #configName (keyup)="changeConfigName(configName.value)" />
+                                class="form-control" cFormControl formControlName="configName" />
+                                class="form-control" cFormControl formControlName="configName" />
+                        </c-input-group>
+                        <c-input-group class="mb-3">
+                            <span cInputGroupText id="basic-addon1">Destination has maximum of</span>
+                            <input aria-describedby="basic-addon1" aria-label="Split" placeholder="3"
+                                class="form-control" cFormControl formControlName="backupCount" />
+                            <span cInputGroupText id="basic-addon1">backups</span>
+                        </c-input-group>
+                        <c-input-group class="mb-3">
+                            <span cInputGroupText id="basic-addon1">Can rollback up to</span>
+                            <input aria-describedby="basic-addon1" aria-label="Split" cFormControl placeholder="4"
+                                class="form-control" cFormControl formControlName="packageCount" />
+                            <span cInputGroupText id="basic-addon1">times</span>
+                        </c-input-group>
+                        <c-input-group class="input-group mb-3">
+                            <span cInputGroupText>Backup as a ZIP</span>
+                            <span cInputGroupText>
+                                <c-form-check>
+                                    <input cFormCheckInput id="checkOne" type="checkbox" 
+                                        formControlName="isZIP" />
+                                </c-form-check>
+                            </span>
+                            
+                        </c-input-group>
+                        <c-button-toolbar role="group">
+                            <c-button-group class="me-2">
+                                <span cInputGroupText id="basic-addon1">Backup Type </span>
+                            </c-button-group>
+                            <c-button-group class="me-2">
+
+                                <input class="btn-check" />
+                                <label  cButton [active]="fullAct" (click)="setFull()" cButton cFormCheckLabel >Full</label>
+                            
+                                <input class="btn-check"  />
+                                <label cButton [active]="diffAct" (click)="setDiff()" cButton cFormCheckLabel >Differencial</label>
+
+                                <input class="btn-check"  />
+                                <label cButton [active]="incrAct" (click)="setIncr()" cButton cFormCheckLabel >Incremental</label>
+                            </c-button-group>
+                        </c-button-toolbar>
+                            <span cInputGroupText>
+                                <c-form-check>
+                                    <input cFormCheckInput id="checkOne" type="checkbox" class="form-control"
+                                        formControlName="isZIP" />
+                                </c-form-check>
+                            </span>
+                            <span cInputGroupText>Backup as a ZIP</span>
+                        <c-dropdown variant="btn-group">
+                            <button color="primary" cButton cDropdownToggle>
+                                Backup Types
+                            </button>
+                            <ul cDropdownMenu>
+                                <li><button (click)="setFull()" cDropdownItem>Full</button></li>
+                                <li><button (click)="setDiff()" cDropdownItem>Differencial</button></li>
+                                <li><button (click)="setIncr()" cDropdownItem>Incremental</button></li>
+                            </ul>
+                        </c-dropdown>
+                        <h6>Current Config Type: {{config.type}}</h6>
+                    </c-card-body>
+                </c-card>
+                <button cButton color="primary" (click)="submit()">Save</button>
+            </c-col>
+        </c-row>
+    </c-container>
+</form>
+
+<app-ftp-modal [visible]="visible" (exit)="exitFtp()"></app-ftp-modal>
+

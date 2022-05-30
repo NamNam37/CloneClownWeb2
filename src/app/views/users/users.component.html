@@ -1,0 +1,14 @@
+<c-card>
+    <c-card-header>
+        <h5 cCardTitle>Users</h5>
+    </c-card-header>
+    <c-card-body>
+        <button cButton (click)="showModal()">Verify New Users</button>
+
+
+        <ng-container *ngIf="users|async as data">
+            <app-users-table [users]="data" (selected)="edit($event)"></app-users-table>
+        </ng-container>
+    </c-card-body>
+</c-card>
+<app-users-modal [visible]="visible" (back)="back($event)"></app-users-modal>

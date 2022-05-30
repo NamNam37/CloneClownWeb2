@@ -1,0 +1,33 @@
+<!--<c-header class="mb-4 d-print-none" position="sticky">-->
+<ng-container>
+  <c-container [fluid]="true">
+    <button toggle="visible" cHeaderToggler [cSidebarToggle]="sidebarId" class="ps-1">
+      <svg cIcon name="cilMenu" size="lg"></svg>
+    </button>
+
+
+    <c-header-nav class="ms-3">
+      <c-row>
+        <c-col>
+          <button cButton color="primary" (click)="logout()">
+            Logout
+          </button>
+        </c-col>
+        <c-col>
+          <ng-container *ngTemplateOutlet="user"></ng-container>
+        </c-col>
+      </c-row>
+    </c-header-nav>
+
+  </c-container>
+</ng-container>
+<!--</c-header>-->
+
+<ng-template #user>
+  <c-dropdown alignment="end" variant="nav-item">
+    <a routerLink="/settings" cButton color="" [caret]="false" cDropdownToggle class="py-0">
+      <c-avatar cTextColor="primary" shape="rounded-1" size="md" src="./assets/img/avatars/3.jpg" status="success">
+      </c-avatar>
+    </a>
+  </c-dropdown>
+</ng-template>
