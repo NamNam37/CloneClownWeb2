@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Configs } from 'src/app/models/configs.model';
+import { DestF } from 'src/app/models/destF.model';
 import { ConfigsService } from 'src/app/services/configs.service';
 
 @Component({

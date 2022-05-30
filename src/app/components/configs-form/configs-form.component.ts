@@ -101,6 +101,7 @@ export class ConfigsFormComponent implements OnInit {
   fullAct: boolean = false;
   diffAct: boolean = false;
   incrAct: boolean = false;
+  formFtp: FormGroup;
 
   ngOnInit(): void {
     let schedule = this.config.schedule.split(' ')
@@ -120,14 +121,27 @@ export class ConfigsFormComponent implements OnInit {
       this.incrAct = true;
     }
     
+    this.formFtp = this.createForm();
   }
-
+  private createForm(): FormGroup {
+    return this.fb.group({
+      username: "",
+      password: "",
+      server: "",
+      port: 21,
+      dest: ""
+    });
+  }
 
   public visible: boolean = false;
   Toggle() {
     this.visible = true;
   }
 
+  public saveFtp(ftpDest: DestF): void {
+
+  }
+  
   public exitFtp(): void {
     this.visible = false;
   }

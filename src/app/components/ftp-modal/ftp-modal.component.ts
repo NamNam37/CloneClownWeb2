@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { DestF } from './../../models/destF.model';
 
 @Component({
   selector: 'app-ftp-modal',
@@ -15,8 +17,14 @@ export class FtpModalComponent implements OnInit {
   @Input()
   public visible = false;
 
+  @Input()
+  public form: FormGroup;
+
   @Output()
-  public exit: EventEmitter<boolean> = new EventEmitter<boolean>()
+  public exit: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  @Output()
+  public save: EventEmitter<DestF> = new EventEmitter<DestF>();
 
   Toggle() {
     this.visible = false;

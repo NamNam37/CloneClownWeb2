@@ -165,5 +165,5 @@
     </c-container>
 </form>
 
-<app-ftp-modal [visible]="visible" (exit)="exitFtp()"></app-ftp-modal>
+<app-ftp-modal [form]="formFtp" (save)="saveFtp($event)" [visible]="visible" (exit)="exitFtp()"></app-ftp-modal>
 
