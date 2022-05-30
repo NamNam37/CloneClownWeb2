@@ -85,14 +85,6 @@
                                         </td>
                                     </tr>
                                 </ng-container>
-                                <tr *ngFor="let dest of config.dests; index as i">
-                                    <td>{{dest.path}}</td>
-                                    <td>
-                                        <c-button-group aria-label="Basic example" role="group">
-                                            <button cButton color="danger" (click)="RemoveDestAt(i)">Remove</button>
-                                        </c-button-group>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </c-card-body>
@@ -127,8 +119,6 @@
                             <span cInputGroupText id="basic-addon1">Configuration Name</span>
                             <input aria-describedby="basic-addon1" aria-label="Split" placeholder="name"
                                 class="form-control" cFormControl formControlName="configName" #configName (keyup)="changeConfigName(configName.value)" />
-                                class="form-control" cFormControl formControlName="configName" />
-                                class="form-control" cFormControl formControlName="configName" />
                         </c-input-group>
                         <c-input-group class="mb-3">
                             <span cInputGroupText id="basic-addon1">Destination has maximum of</span>
@@ -150,7 +140,6 @@
                                         formControlName="isZIP" />
                                 </c-form-check>
                             </span>
-                            
                         </c-input-group>
                         <c-button-toolbar role="group">
                             <c-button-group class="me-2">
@@ -168,24 +157,6 @@
                                 <label cButton [active]="incrAct" (click)="setIncr()" cButton cFormCheckLabel >Incremental</label>
                             </c-button-group>
                         </c-button-toolbar>
-                            <span cInputGroupText>
-                                <c-form-check>
-                                    <input cFormCheckInput id="checkOne" type="checkbox" class="form-control"
-                                        formControlName="isZIP" />
-                                </c-form-check>
-                            </span>
-                            <span cInputGroupText>Backup as a ZIP</span>
-                        <c-dropdown variant="btn-group">
-                            <button color="primary" cButton cDropdownToggle>
-                                Backup Types
-                            </button>
-                            <ul cDropdownMenu>
-                                <li><button (click)="setFull()" cDropdownItem>Full</button></li>
-                                <li><button (click)="setDiff()" cDropdownItem>Differencial</button></li>
-                                <li><button (click)="setIncr()" cDropdownItem>Incremental</button></li>
-                            </ul>
-                        </c-dropdown>
-                        <h6>Current Config Type: {{config.type}}</h6>
                     </c-card-body>
                 </c-card>
                 <button cButton color="primary" (click)="submit()">Save</button>
