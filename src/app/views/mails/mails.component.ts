@@ -11,9 +11,8 @@ import { AdminsService } from 'src/app/services/admins.service';
 export class MailsComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
-              private service: AdminsService) { }
+    private service: AdminsService) { }
   ngOnInit(): void {
-    this.form = this.createForm(this.admin);
   }
 
   public cron1: string = '';
@@ -21,21 +20,38 @@ export class MailsComponent implements OnInit {
   public cron3: string = '';
   public cron4: string = '';
   public cron5: string = '';
-  public form: FormGroup;
-  public admin: Admins;
+
+  public admin: Admins = new Admins();
+  public form: FormGroup = this.createForm();
 
   public submit(): void {
     this.admin.schedule = this.cron1 + ' ' + this.cron2 + ' ' + this.cron3 + ' ' + this.cron4 + ' ' + this.cron5
-    
+    console.log(this.admin);
 
     //this.service.save(this.admin).subscribe()
   }
 
-  private createForm(admin: Admins): FormGroup {
+  private createForm(): FormGroup {
     return this.fb.group({
-      mail: admin.mail,
-      errors: admin.errors,
-      successes: admin.successes
+      email: "",
+      errors: "",
+      successes: ""
     });
+  }
+
+  public onChange1(value: string): void {
+    this.cron1 = value
+  }
+  public onChange2(value: string): void {
+    this.cron2 = value
+  }
+  public onChange3(value: string): void {
+    this.cron3 = value
+  }
+  public onChange4(value: string): void {
+    this.cron4 = value
+  }
+  public onChange5(value: string): void {
+    this.cron5 = value
   }
 }

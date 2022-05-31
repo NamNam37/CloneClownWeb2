@@ -1,70 +1,69 @@
-<form [formGroup]="form" (ngSubmit)="save()">
-<c-container>
-    <c-row>
-        <c-col>
-            <c-card class="mb-4">
-                <c-card-header>
-                    <h5 cCardTitle>Basic Settings</h5>
-                </c-card-header>
-                <c-card-body>
-                    <div class="input-group mb-3">
-                        <input  cFormControl placeholder="admin@cloneclown.com" />
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value=""
-                                aria-label="Checkbox for following text input">
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <c-container>
+        <c-row>
+            <c-col>
+                <c-card class="mb-4">
+                    <c-card-header>
+                        <h5 cCardTitle>Basic Settings</h5>
+                    </c-card-header>
+                    <c-card-body>
+                        <div class="input-group mb-3">
+                            <input cFormControl class="form-control" placeholder="admin@cloneclown.com"
+                                formControlName="email" />
                         </div>
-                        <span cInputGroupText>Send Succesful Logs</span>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-text">
-                            <input class="form-check-input mt-0" type="checkbox" value=""
-                                aria-label="Checkbox for following text input">
+                        <div class="input-group mb-3">
+                            <div class="input-group-text">
+                                <input cFormCheckInput class="form-control" type="checkbox" formControlName="successes">
+                            </div>
+                            <span cInputGroupText>Send Succesful Logs</span>
                         </div>
-                        <span cInputGroupText>Send Failed Logs</span>
-                    </div>
-                </c-card-body>
-            </c-card>
+                        <div class="input-group mb-3">
+                            <div class="input-group-text">
+                                <input cFormCheckInput class="form-control" type="checkbox" formControlName="errors">
+                            </div>
+                            <span cInputGroupText>Send Failed Logs</span>
+                        </div>
+                    </c-card-body>
+                </c-card>
 
-        </c-col>
-        <c-col>
-            <c-card class="mb-4">
-                <c-card-header>
-                    <h5 cCardTitle>Schedule</h5>
-                </c-card-header>
-                <c-card-body>
-                    <div class="input-group mb-3">
-                        <c-input-group>
-                            <span cInputGroupText>Cron string</span>
+            </c-col>
+            <c-col>
+                <c-card class="mb-4">
+                    <c-card-header>
+                        <h5 cCardTitle>Schedule</h5>
+                    </c-card-header>
+                    <c-card-body>
+                        <div class="input-group mb-3">
+                            <c-input-group>
+                                <span cInputGroupText>Cron string</span>
 
-                            <input cFormControl value="{{cron1}}" #cron1el (keyup)="onChange1(cron1el.value)" />
-                            <input cFormControl value="{{cron2}}" #cron2el (keyup)="onChange2(cron2el.value)" />
-                            <input cFormControl value="{{cron3}}" #cron3el (keyup)="onChange3(cron3el.value)" />
-                            <input cFormControl value="{{cron4}}" #cron4el (keyup)="onChange4(cron4el.value)" />
-                            <input cFormControl value="{{cron5}}" #cron5el (keyup)="onChange5(cron5el.value)" />
+                                <input cFormControl value="{{cron1}}" #cron1el (keyup)="onChange1(cron1el.value)" />
+                                <input cFormControl value="{{cron2}}" #cron2el (keyup)="onChange2(cron2el.value)" />
+                                <input cFormControl value="{{cron3}}" #cron3el (keyup)="onChange3(cron3el.value)" />
+                                <input cFormControl value="{{cron4}}" #cron4el (keyup)="onChange4(cron4el.value)" />
+                                <input cFormControl value="{{cron5}}" #cron5el (keyup)="onChange5(cron5el.value)" />
 
-                        </c-input-group>
-                    </div>
-                    <div class="input-group mb-3">
-                        <button cButton color="primary">Add To Presets</button>
+                            </c-input-group>
+                        </div>
+                        <div class="input-group mb-3">
+                            <button cButton color="primary">Add To Presets</button>
 
-                        <c-dropdown>
-                            <button cButton cDropdownToggle color="primary">
-                                Presets
-                            </button>
+                            <c-dropdown>
+                                <button cButton cDropdownToggle color="primary">
+                                    Presets
+                                </button>
 
-                            <ul cDropdownMenu>
-                                <li><a [routerLink] cDropdownItem>M - F</a></li>
-                                <li><a [routerLink] cDropdownItem>Every Monday</a></li>
-                                <li><a [routerLink] cDropdownItem>Friday 13th of 2023</a></li>
-                            </ul>
-                        </c-dropdown>
-                    </div>
-                </c-card-body>
-            </c-card>
+                                <ul cDropdownMenu>
+                                    <li><a [routerLink] cDropdownItem>M - F</a></li>
+                                    <li><a [routerLink] cDropdownItem>Every Monday</a></li>
+                                    <li><a [routerLink] cDropdownItem>Friday 13th of 2023</a></li>
+                                </ul>
+                            </c-dropdown>
+                        </div>
+                    </c-card-body>
+                </c-card>
 
-        </c-col>
-    </c-row>
-    <button cButton color="primary">Save</button>
-</c-container>
+            </c-col>
+        </c-row>
+        <button cButton color="primary" type="submit">Save</button>
+    </c-container>
