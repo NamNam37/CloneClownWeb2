@@ -6,5 +6,5 @@ export class Admins {
     public mail: string = "";
     public errors: boolean = false;
     public successes: boolean = false;
-    public schedule: Date = new Date();  
+    public schedule: string = "";  
   }

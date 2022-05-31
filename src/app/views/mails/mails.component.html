@@ -1,3 +1,4 @@
+<form [formGroup]="form" (ngSubmit)="save()">
 <c-container>
     <c-row>
         <c-col>
@@ -6,12 +7,9 @@
                     <h5 cCardTitle>Basic Settings</h5>
                 </c-card-header>
                 <c-card-body>
-                    <c-input-group class="mb-3">
-                        <input aria-label="Username" cFormControl placeholder="Username" />
-                        <span cInputGroupText>@</span>
-                        <input aria-label="Server" cFormControl placeholder="Server" />
-                        <button cButton color="primary">Send Test Mail</button>
-                    </c-input-group>
+                    <div class="input-group mb-3">
+                        <input  cFormControl placeholder="admin@cloneclown.com" />
+                    </div>
                     <div class="input-group mb-3">
                         <div class="input-group-text">
                             <input class="form-check-input mt-0" type="checkbox" value=""
@@ -39,12 +37,13 @@
                     <div class="input-group mb-3">
                         <c-input-group>
                             <span cInputGroupText>Cron string</span>
-                            <input cFormControl />
-                            <input cFormControl />
-                            <input cFormControl />
-                            <input cFormControl />
-                            <input cFormControl />
-                            <input cFormControl />
+
+                            <input cFormControl value="{{cron1}}" #cron1el (keyup)="onChange1(cron1el.value)" />
+                            <input cFormControl value="{{cron2}}" #cron2el (keyup)="onChange2(cron2el.value)" />
+                            <input cFormControl value="{{cron3}}" #cron3el (keyup)="onChange3(cron3el.value)" />
+                            <input cFormControl value="{{cron4}}" #cron4el (keyup)="onChange4(cron4el.value)" />
+                            <input cFormControl value="{{cron5}}" #cron5el (keyup)="onChange5(cron5el.value)" />
+
                         </c-input-group>
                     </div>
                     <div class="input-group mb-3">

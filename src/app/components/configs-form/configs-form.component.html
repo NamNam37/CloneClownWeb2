@@ -71,14 +71,20 @@
                             <thead>
                                 <h6>FTP Destinations</h6>
                                 <tr>
-                                    <th scope="col">a</th>
-                                    <th scope="col">b</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <ng-container *ngFor="let dest of config.dests">
                                     <tr *ngIf="dest.type == 'ftp'">
                                         <td>{{dest.path}}</td>
+                                        <td>{{dest.login}}</td>
+                                        <td>{{dest.hostname}}</td>
+                                        <td>{{dest.port}}</td>
                                         <td>
                                             <c-button-group aria-label="Basic example" role="group">
                                                 <button cButton color="danger"

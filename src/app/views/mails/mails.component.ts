@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Admins } from 'src/app/models/admins.model';
+import { AdminsService } from 'src/app/services/admins.service';
 
 @Component({
   selector: 'app-mails',
@@ -7,21 +9,33 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./mails.component.scss']
 })
 export class MailsComponent implements OnInit {
-  items = [1, 2, 3, 4];
-  constructor(private sanitizer: DomSanitizer) { }
+
+  constructor(private fb: FormBuilder,
+              private service: AdminsService) { }
   ngOnInit(): void {
-  }
-  getAccordionBodyText(value: string) {
-    const textSample = `
-      <strong>This is the <mark>#${value}</mark> item accordion body.</strong> It is hidden by
-      default, until the collapse plugin adds the appropriate classes that we use to
-      style each element. These classes control the overall appearance, as well as
-      the showing and hiding via CSS transitions. You can modify any of this with
-      custom CSS or overriding our default variables. It&#39;s also worth noting
-      that just about any HTML can go within the <code>.accordion-body</code>,
-      though the transition does limit overflow.
-    `;
-    return this.sanitizer.bypassSecurityTrustHtml(textSample);
+    this.form = this.createForm(this.admin);
   }
 
+  public cron1: string = '';
+  public cron2: string = '';
+  public cron3: string = '';
+  public cron4: string = '';
+  public cron5: string = '';
+  public form: FormGroup;
+  public admin: Admins;
+
+  public submit(): void {
+    this.admin.schedule = this.cron1 + ' ' + this.cron2 + ' ' + this.cron3 + ' ' + this.cron4 + ' ' + this.cron5
+    
+
+    //this.service.save(this.admin).subscribe()
+  }
+
+  private createForm(admin: Admins): FormGroup {
+    return this.fb.group({
+      mail: admin.mail,
+      errors: admin.errors,
+      successes: admin.successes
+    });
+  }
 }
