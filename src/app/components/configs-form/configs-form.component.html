@@ -58,14 +58,15 @@
                                         <td>{{dest.path}}</td>
                                         <td>
                                             <c-button-group aria-label="Basic example" role="group">
-                                                <button cButton color="danger" (click)="RemoveDestById(dest.id)">Remove</button>
+                                                <button cButton color="danger"
+                                                    (click)="RemoveDestById(dest.id)">Remove</button>
                                             </c-button-group>
                                         </td>
                                     </tr>
                                 </ng-container>
                             </tbody>
                         </table>
-                        
+
                         <table cTable hover>
                             <thead>
                                 <h6>FTP Destinations</h6>
@@ -80,7 +81,8 @@
                                         <td>{{dest.path}}</td>
                                         <td>
                                             <c-button-group aria-label="Basic example" role="group">
-                                                <button cButton color="danger" (click)="RemoveDestById(dest.id)">Remove</button>
+                                                <button cButton color="danger"
+                                                    (click)="RemoveDestById(dest.id)">Remove</button>
                                             </c-button-group>
                                         </td>
                                     </tr>
@@ -118,7 +120,8 @@
                         <c-input-group class="mb-3">
                             <span cInputGroupText id="basic-addon1">Configuration Name</span>
                             <input aria-describedby="basic-addon1" aria-label="Split" placeholder="name"
-                                class="form-control" cFormControl formControlName="configName" #configName (keyup)="changeConfigName(configName.value)" />
+                                class="form-control" cFormControl formControlName="configName" #configName
+                                (keyup)="changeConfigName(configName.value)" />
                         </c-input-group>
                         <c-input-group class="mb-3">
                             <span cInputGroupText id="basic-addon1">Destination has maximum of</span>
@@ -136,8 +139,7 @@
                             <span cInputGroupText>Backup as a ZIP</span>
                             <span cInputGroupText>
                                 <c-form-check>
-                                    <input cFormCheckInput id="checkOne" type="checkbox" 
-                                        formControlName="isZIP" />
+                                    <input cFormCheckInput id="checkOne" type="checkbox" formControlName="isZIP" />
                                 </c-form-check>
                             </span>
                         </c-input-group>
@@ -148,13 +150,16 @@
                             <c-button-group class="me-2">
 
                                 <input class="btn-check" />
-                                <label  cButton [active]="fullAct" (click)="setFull()" cButton cFormCheckLabel >Full</label>
-                            
-                                <input class="btn-check"  />
-                                <label cButton [active]="diffAct" (click)="setDiff()" cButton cFormCheckLabel >Differencial</label>
+                                <label cButton [active]="fullAct" (click)="setFull()" cButton
+                                    cFormCheckLabel>Full</label>
 
-                                <input class="btn-check"  />
-                                <label cButton [active]="incrAct" (click)="setIncr()" cButton cFormCheckLabel >Incremental</label>
+                                <input class="btn-check" />
+                                <label cButton [active]="diffAct" (click)="setDiff()" cButton
+                                    cFormCheckLabel>Differencial</label>
+
+                                <input class="btn-check" />
+                                <label cButton [active]="incrAct" (click)="setIncr()" cButton
+                                    cFormCheckLabel>Incremental</label>
                             </c-button-group>
                         </c-button-toolbar>
                     </c-card-body>
@@ -165,5 +170,4 @@
     </c-container>
 </form>
 
-<app-ftp-modal [form]="formFtp" (save)="saveFtp($event)" [visible]="visible" (exit)="exitFtp()"></app-ftp-modal>
-
+<app-ftp-modal [form]="formFtp" (save)="saveFtp()" [visible]="visible" (exit)="exitFtp()"></app-ftp-modal>

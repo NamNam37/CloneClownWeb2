@@ -1,34 +1,36 @@
-<c-modal id="FTPModal" [visible]="visible" (visibleChange)="handleChange($event)">
-    <c-modal-header>
-        <h5 cModalTitle>Add an FTP Destination</h5>
-        <button (click)="Toggle()" cButtonClose></button>
-    </c-modal-header>
-    <c-modal-body>
-        <c-input-group class="mb-3">
-            <span cInputGroupText id="basic-addon1">Username</span>
-            <input cFormControl formControlName="username" placeholder="Admin" />
-        </c-input-group>
-        <c-input-group class="mb-3">
-            <span cInputGroupText id="basic-addon1">Password</span>
-            <input cFormControl formControlName="password" placeholder="*******" />
-        </c-input-group>
-        <c-input-group class="mb-3">
-            <span cInputGroupText id="basic-addon1">Server</span>
-            <input cFormControl formControlName="server" placeholder="apple.com" />
-        </c-input-group>
-        <c-input-group class="mb-3">
-            <span cInputGroupText id="basic-addon1">Port</span>
-            <input cFormControl formControlName="port" placeholder="default:21" />
-        </c-input-group>
-        <c-input-group class="mb-3">
-            <span cInputGroupText id="basic-addon1">Destination</span>
-            <input cFormControl formControlName="dest" placeholder="X:\Backups" />
-        </c-input-group>
-    </c-modal-body>
-    <c-modal-footer>
-        <button (click)="Toggle()" cButton color="secondary">
-            Close
-        </button>
-        <button cButton color="primary">Add</button>
-    </c-modal-footer>
-</c-modal>
+<form [formGroup]="form" (ngSubmit)="saved()">
+    <c-modal id="FTPModal" [visible]="visible" (visibleChange)="handleChange($event)">
+        <c-modal-header>
+            <h5 cModalTitle>Add an FTP Destination</h5>
+            <button (click)="Toggle()" cButtonClose></button>
+        </c-modal-header>
+        <c-modal-body>
+            <c-input-group class="mb-3">
+                <span cInputGroupText id="basic-addon1">Username</span>
+                <input cFormControl formControlName="login" placeholder="Admin" />
+            </c-input-group>
+            <c-input-group class="mb-3">
+                <span cInputGroupText id="basic-addon1">Password</span>
+                <input cFormControl formControlName="password" placeholder="*******" />
+            </c-input-group>
+            <c-input-group class="mb-3">
+                <span cInputGroupText id="basic-addon1">Hostname</span>
+                <input cFormControl formControlName="hostname" placeholder="apple.com" />
+            </c-input-group>
+            <c-input-group class="mb-3">
+                <span cInputGroupText id="basic-addon1">Port</span>
+                <input cFormControl formControlName="port" placeholder="default:21" />
+            </c-input-group>
+            <c-input-group class="mb-3">
+                <span cInputGroupText id="basic-addon1">Destination</span>
+                <input cFormControl formControlName="path" placeholder="X:\Backups" />
+            </c-input-group>
+        </c-modal-body>
+        <c-modal-footer>
+            <button (click)="Toggle()" cButton color="secondary">
+                Close
+            </button>
+            <button cButton color="primary" type="submit">Save</button>
+        </c-modal-footer>
+    </c-modal>
+</form>

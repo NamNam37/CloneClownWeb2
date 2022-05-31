@@ -87,7 +87,7 @@ export class ConfigsFormComponent implements OnInit {
   }
 
   constructor(private service: ConfigsService,
-              private fb: FormBuilder) { }
+    private fb: FormBuilder) { }
 
   public RemoveSourceAt(index: number): void {
     this.config.sources.splice(index, 1);
@@ -120,16 +120,16 @@ export class ConfigsFormComponent implements OnInit {
     if (this.config.type == "incremental") {
       this.incrAct = true;
     }
-    
+
     this.formFtp = this.createForm();
   }
   private createForm(): FormGroup {
     return this.fb.group({
-      username: "",
+      login: "",
       password: "",
-      server: "",
+      hostname: "",
       port: 21,
-      dest: ""
+      path: ""
     });
   }
 
@@ -138,10 +138,17 @@ export class ConfigsFormComponent implements OnInit {
     this.visible = true;
   }
 
-  public saveFtp(ftpDest: DestF): void {
-
+  public saveFtp(): void {
+    let ftpDest = new DestF();
+    Object.assign(ftpDest, this.formFtp.value);
+    this.formFtp = this.createForm();
+    ftpDest.port = +ftpDest.port;
+    ftpDest.type = "ftp";
+    ftpDest.configID = this.config.id;
+    this.config.dests.push(ftpDest);
+    this.visible = false;
   }
-  
+
   public exitFtp(): void {
     this.visible = false;
   }

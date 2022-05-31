@@ -31,10 +31,14 @@ export class FtpModalComponent implements OnInit {
     this.exit.emit();
   }
 
+  public saved(): void {
+    this.save.emit();
+  }
+
   handleChange(event: any) {
     this.visible = event;
-    if(this.visible == false) {
-    this.exit.emit();
+    if (this.visible == false) {
+      this.exit.emit();
     }
   }
 }
