@@ -19,4 +19,6 @@ export class LogsTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public view(): void {
+  }
 }

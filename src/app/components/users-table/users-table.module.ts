@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
+  AlertModule,
   AvatarModule,
   ButtonGroupModule,
   ButtonModule,
@@ -21,6 +22,7 @@ import { UsersTableComponent } from './users-table.component';
 @NgModule({
   declarations: [UsersTableComponent],
   imports: [
+    AlertModule,
     ModalModule,
     CardModule,
     NavModule,

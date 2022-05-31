@@ -8,16 +8,19 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let config of configs">
+        <tr *ngFor="let config of configs; index as i">
             <td>{{config.configName}}</td>
             <td>{{config.schedule}}</td>
             <td>{{config.last_used}}</td>
             <td>
                 <c-button-group aria-label="Basic example" role="group">
-                    <button cButton color="danger">Remove</button>
+                    <button cButton color="danger" (click)="removeAt(i)">Remove</button>
                     <button cButton color="primary" (click)="edit(config)">Edit</button>
                 </c-button-group>
             </td>
         </tr>
     </tbody>
 </table>
+<ng-container *ngIf="configs[0] == null">
+    <c-alert>Configurations are loading.</c-alert>
+</ng-container>

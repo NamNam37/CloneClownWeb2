@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Configs } from 'src/app/models/configs.model';
 import { DestF } from 'src/app/models/destF.model';
 import { SourceF } from 'src/app/models/sourceF.model';
@@ -12,11 +13,11 @@ import { ConfigsService } from 'src/app/services/configs.service';
 })
 export class ConfigsFormComponent implements OnInit {
 
-  public cron1: string = '';
-  public cron2: string = '';
-  public cron3: string = '';
-  public cron4: string = '';
-  public cron5: string = '';
+  public cron1: string = "";
+  public cron2: string = "";
+  public cron3: string = "";
+  public cron4: string = "";
+  public cron5: string = "";
 
   @Input()
   public form: FormGroup;
@@ -30,7 +31,10 @@ export class ConfigsFormComponent implements OnInit {
     this.config.isZIP = this.form.get('isZIP')?.value
     this.config.packageCount = this.form.get('packageCount')?.value
     this.config.backupCount = this.form.get('backupCount')?.value
-    this.service.save(this.config).subscribe()
+    this.service.save(this.config).subscribe(config => {
+      this.router.navigate(['configs'])
+    });
+
   }
 
   changeConfigName(name: string): void {
@@ -87,7 +91,8 @@ export class ConfigsFormComponent implements OnInit {
   }
 
   constructor(private service: ConfigsService,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private router: Router) { }
 
   public RemoveSourceAt(index: number): void {
     this.config.sources.splice(index, 1);
@@ -104,6 +109,7 @@ export class ConfigsFormComponent implements OnInit {
   formFtp: FormGroup;
 
   ngOnInit(): void {
+
     let schedule = this.config.schedule.split(' ')
     this.cron1 = schedule[0]
     this.cron2 = schedule[1]

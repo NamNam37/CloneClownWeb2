@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {catchError, map, Observable, of, tap} from "rxjs";
 import {environment} from "../../environments/environment";
 import {JwtHelperService} from "@auth0/angular-jwt";
+import { AdminsService } from './admins.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class SessionsService {
   public token: string|null = null;
 
   constructor(private http: HttpClient,
-              private jwt: JwtHelperService) {
+              private jwt: JwtHelperService,
+              private service: AdminsService) {
     this.token = this.loadToken();
   }
 
@@ -21,6 +23,7 @@ export class SessionsService {
     return this.http.post<string>(environment.api + '/api/sessions', credentials).pipe(
       tap(token => this.token = token),
       tap(token => this.saveToken(token)),
+      tap(a => this.service.findByName(credentials.login).subscribe(thisAdmin => this.saveAdminId(thisAdmin[0].id.toString()))),
       map(token => true),
       catchError(() => of(false))
     );
@@ -28,6 +31,7 @@ export class SessionsService {
 
   public logout(): void {
     this.token = null;
+    sessionStorage.removeItem('id');
     sessionStorage.removeItem('token');
   }
 
@@ -37,6 +41,13 @@ export class SessionsService {
 
   private saveToken(token: string): void {
     sessionStorage.setItem('token', token);
+  }
+
+  private saveAdminId(id: string): void {
+    sessionStorage.setItem('id', id);
+  }
+  public loadAdminId(): string|null {
+    return sessionStorage.getItem('id');
   }
 
   private loadToken(): string|null {

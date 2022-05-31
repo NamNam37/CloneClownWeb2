@@ -34,4 +34,8 @@ export class ConfigsService {
       return this.http.post<Configs>(environment.api + '/api/configs/', log);
     }
   }
+  public delete(index: number): Observable<Configs> {
+    this.http.delete<Configs>(environment.api + '/api/configs/' + index).subscribe();
+    return this.http.delete<Configs>(environment.api + '/api/configs/' + index);
+  }
 }

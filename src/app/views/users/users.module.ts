@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
+  AlertModule,
   AvatarModule,
   ButtonGroupModule,
   ButtonModule,
@@ -27,6 +28,7 @@ import { UsersModalModule } from 'src/app/components/users-modal/users-modal.mod
   declarations: [UsersComponent,
   ],
   imports: [
+    AlertModule,
     UsersTableModule,
     UsersModalModule,
     UsersRoutingModule,

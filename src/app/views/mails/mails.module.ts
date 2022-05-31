@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
+  AlertModule,
   AvatarModule,
   ButtonGroupModule,
   ButtonModule,
@@ -27,6 +28,7 @@ import { MailsComponent } from './mails.component';
 @NgModule({
   declarations: [MailsComponent],
   imports: [
+    AlertModule,
     CommonModule,
     MailsRoutingModule,
     AccordionModule,

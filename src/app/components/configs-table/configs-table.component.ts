@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Configs } from 'src/app/models/configs.model';
+import { ConfigsService } from 'src/app/services/configs.service';
 
 @Component({
   selector: 'app-configs-table',
@@ -17,8 +18,12 @@ export class ConfigsTableComponent implements OnInit {
   public edit(config: Configs): void {
     this.selected.emit(config);
   }
+  public removeAt(index: number): void {
+    this.service.delete(this.configs[index].id);
+    this.configs.splice(index, 1);
+  }
 
-  constructor() { }
+  constructor(private service: ConfigsService) { }
 
   ngOnInit(): void {
   }

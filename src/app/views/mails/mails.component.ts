@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { tap } from 'rxjs';
 import { Admins } from 'src/app/models/admins.model';
 import { AdminsService } from 'src/app/services/admins.service';
+import { SessionsService } from 'src/app/services/sessions.service';
 
 @Component({
   selector: 'app-mails',
@@ -11,8 +13,25 @@ import { AdminsService } from 'src/app/services/admins.service';
 export class MailsComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
-    private service: AdminsService) { }
+    private service: AdminsService,
+    private sessions: SessionsService) { }
+
   ngOnInit(): void {
+    let id = this.sessions.loadAdminId();
+    let idNum = 0;
+    if(id) {
+      idNum = +id;
+    }
+    this.service.findById(idNum).subscribe(a => {
+                                                  this.admin = a;
+                                                  this.form = this.createForm(a);
+                                                  let scheduleArr = this.admin.schedule.split(' ');
+                                                  this.cron1 = scheduleArr[0];
+                                                  this.cron2 = scheduleArr[1];
+                                                  this.cron3 = scheduleArr[2];
+                                                  this.cron4 = scheduleArr[3];
+                                                  this.cron5 = scheduleArr[4];
+                                                });
   }
 
   public cron1: string = '';
@@ -22,20 +41,20 @@ export class MailsComponent implements OnInit {
   public cron5: string = '';
 
   public admin: Admins = new Admins();
-  public form: FormGroup = this.createForm();
+  public form: FormGroup
 
   public submit(): void {
     this.admin.schedule = this.cron1 + ' ' + this.cron2 + ' ' + this.cron3 + ' ' + this.cron4 + ' ' + this.cron5
-    console.log(this.admin);
+    Object.assign(this.admin, this.form.value)
 
-    //this.service.save(this.admin).subscribe()
+    this.service.save(this.admin).subscribe()
   }
 
-  private createForm(): FormGroup {
+  private createForm(admin: Admins): FormGroup {
     return this.fb.group({
-      email: "",
-      errors: "",
-      successes: ""
+      email: admin.email,
+      errors: admin.errors,
+      successes: admin.successes
     });
   }
 

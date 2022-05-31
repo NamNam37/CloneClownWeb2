@@ -25,6 +25,8 @@ export class ConfigsCreatorComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.createForm();
     this.config.configName = "default";
+    this.config.type = "full";
+    this.config.schedule = "* * * * *"
   }
 
   private createForm(): FormGroup {

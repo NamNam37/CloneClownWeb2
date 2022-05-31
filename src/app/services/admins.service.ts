@@ -18,6 +18,10 @@ export class AdminsService {
     return this.http.get<Admins[]>(environment.api + '/api/Admins');
   }
 
+  public findByName(username: string): Observable<Admins[]> {
+    return this.http.get<Admins[]>(environment.api + '/api/admins?name=' + username);
+  }
+
   public findById(id: number): Observable<Admins> {
     return this.http.get<Admins>(environment.api + '/api/Admins/' + id);
   }

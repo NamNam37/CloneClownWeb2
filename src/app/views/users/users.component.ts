@@ -14,11 +14,14 @@ export class UsersComponent implements OnInit {
 
   public visible: boolean = false
   users: Observable<Users[]>;
+  loaded: boolean = false;
   constructor(private router: Router,
     private service: UsersService) { }
 
   ngOnInit(): void {
+    this.service.findAll().subscribe(a => this.loaded = true)
     this.users = this.service.findAll()
+    
   }
 
   icons = freeSet;
