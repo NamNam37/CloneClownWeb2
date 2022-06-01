@@ -1,0 +1,16 @@
+<c-modal alignment="center" id="FTPModal" [visible]="visible" (visibleChange)="handleChange($event)">
+    <c-modal-header>
+        <h5 cModalTitle>Do you really want to delete all logs?</h5>
+        <button (click)="Toggle()" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body >
+        <c-row>
+            <c-col md="2">
+                <button (click)="Toggle()" cButton color="secondary" >Close</button>
+            </c-col>
+            <c-col>
+                <button cButton color="danger" (click)="confirmRemove()">Confirm</button>
+            </c-col>
+        </c-row>
+    </c-modal-body>
+</c-modal>

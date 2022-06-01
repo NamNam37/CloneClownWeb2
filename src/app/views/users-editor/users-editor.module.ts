@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
+  AlertModule,
   AvatarModule,
   ButtonGroupModule,
   ButtonModule,
@@ -24,6 +25,7 @@ import { UsersEditorComponent } from './users-editor.component';
 @NgModule({
   declarations: [UsersEditorComponent],
   imports: [
+    AlertModule,
     CommonModule,
     UsersEditorRoutingModule,
     ModalModule,

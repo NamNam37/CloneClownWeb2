@@ -30,4 +30,11 @@ export class LogsService {
       return this.http.post<Logs>(environment.api + '/api/logs/', log);
     }
   }
+
+  public delete(index: number): void {
+    this.http.delete<Logs>(environment.api + '/api/logs/' + index).subscribe();
+  }
+  public deleteAll(): void {
+    this.http.delete<Logs>(environment.api + '/api/logs/' + 1 + "?removeAll=true").subscribe();
+  }
 }

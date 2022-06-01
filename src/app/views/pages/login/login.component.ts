@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { filter } from 'rxjs';
+import { delay, filter, of, pipe, tap } from 'rxjs';
 import { SessionsService } from 'src/app/services/sessions.service';
 
 @Component({
@@ -33,6 +33,8 @@ export class LoginComponent {
     this.service.login(this.form.value).pipe(
       filter(result => result === false)
     ).subscribe(() => this.wrongCreds = true);
+
+    of(1).pipe(delay(3000)).subscribe(a => this.wrongCreds = false)
   }
 
 }

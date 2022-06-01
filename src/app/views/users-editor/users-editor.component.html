@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="save()">
+<form *ngIf="form" [formGroup]="form" (ngSubmit)="save()">
     <c-col>
         <c-card class="mb-4">
             <c-card-header>
@@ -54,3 +54,6 @@
         <button cButton color="primary" type="submit">Save</button>
     </c-col>
 </form>
+<ng-container *ngIf="!form">
+    <c-alert color="danger">User doesn't exist!</c-alert>
+</ng-container>

@@ -2,7 +2,7 @@
     <c-alert>Loading admin settings.</c-alert>
 </ng-container>
 <form *ngIf="form" [formGroup]="form" (ngSubmit)="submit()">
-    <c-container>
+    <c-container class="mb-4">
         <c-row>
             <c-col>
                 <c-card class="mb-4">
@@ -54,3 +54,7 @@
         </c-row>
         <button cButton color="primary" type="submit">Save</button>
     </c-container>
+    <ng-container *ngIf="saveAlert">
+        <c-alert color="success">Admin email settings are saved!</c-alert>
+    </ng-container>
+</form>

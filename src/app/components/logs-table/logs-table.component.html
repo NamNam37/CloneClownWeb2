@@ -10,13 +10,16 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let log of logs">
+    <tr *ngFor="let log of logs ; index as i">
       <td>{{ log.user.username }}</td>
       <td>{{ log.config.configName }}</td>
       <td>{{ log.date}}</td>
       <td>{{ log.status}}</td>
       <td>{{ log.alreadySent}}</td>
-      <td><a class="btn btn-primary" (click)="view()">View Error Details</a></td>
+      <td><c-button-group aria-label="Basic example" role="group">
+        <button cButton (click)="view(log)">View Error Details</button>
+        <button cButton color="danger" (click)="removeAt(i)">Remove</button>
+      </c-button-group></td>
     </tr>
   </tbody>
 </table>

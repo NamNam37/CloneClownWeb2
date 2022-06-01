@@ -3,8 +3,16 @@
         <h5 cCardTitle>Logs</h5>
     </c-card-header>
     <c-card-body>
-        <ng-container *ngIf="logs|async as data">
-            <app-logs-table [logs]="data"></app-logs-table>
-        </ng-container>
+        <c-container>
+            <button cButton color="danger" (click)="confirmModal()">Remove ALL Logs</button>
+          </c-container>
+        <c-container *ngIf="logs|async as data">
+            <app-logs-table [logs]="data" (selected)="viewModal($event)"></app-logs-table>
+        </c-container>
+        <c-container *ngIf="loaded == false">
+            <c-alert>Logs are loading.</c-alert>
+        </c-container>
     </c-card-body>
 </c-card>
+<app-logs-modal-warning [visible]="visibleRemove" (exit)="exitRemove()" (confirm)="removeAll()"></app-logs-modal-warning>
+<app-logs-modal-view  [visible]="visibleView" (exit)="exitView()" [logToView]="logToView"></app-logs-modal-view>

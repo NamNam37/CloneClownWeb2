@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { tap } from 'rxjs';
+import { delay, tap } from 'rxjs';
 import { Admins } from 'src/app/models/admins.model';
 import { AdminsService } from 'src/app/services/admins.service';
 import { SessionsService } from 'src/app/services/sessions.service';
@@ -42,12 +42,14 @@ export class MailsComponent implements OnInit {
 
   public admin: Admins = new Admins();
   public form: FormGroup
+  public saveAlert: boolean = false;
 
   public submit(): void {
     this.admin.schedule = this.cron1 + ' ' + this.cron2 + ' ' + this.cron3 + ' ' + this.cron4 + ' ' + this.cron5
     Object.assign(this.admin, this.form.value)
 
-    this.service.save(this.admin).subscribe()
+    this.saveAlert = true;
+    this.service.save(this.admin).pipe(delay(5000)).subscribe(a => this.saveAlert = false)
   }
 
   private createForm(admin: Admins): FormGroup {

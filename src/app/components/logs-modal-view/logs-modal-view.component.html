@@ -1,0 +1,15 @@
+<c-modal [visible]="visible" (visibleChange)="handleChange($event)">
+    <c-modal-header>
+        <h5 cModalTitle>Log made by user: "{{logToView.user.username}}"</h5>
+        <button (click)="Toggle()" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body >
+        {{logToView.status}}
+        {{logToView.config.configName}}
+
+    </c-modal-body>
+    <c-modal-footer>
+        <button (click)="Toggle()" cButton color="secondary" >Close</button>
+    </c-modal-footer>
+</c-modal>
+
