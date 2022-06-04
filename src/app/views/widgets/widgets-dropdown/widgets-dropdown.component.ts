@@ -9,6 +9,10 @@ import {
 } from '@angular/core';
 import { getStyle } from '@coreui/utils/src';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
+import { ConfigsService } from 'src/app/services/configs.service';
+import { UsersService } from 'src/app/services/users.service';
+import { AdminsService } from 'src/app/services/admins.service';
+import { LogsService } from 'src/app/services/logs.service';
 
 @Component({
   selector: 'app-widgets-dropdown',
@@ -19,7 +23,11 @@ import { ChartjsComponent } from '@coreui/angular-chartjs';
 export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
 
   constructor(
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
+    private serviceUsers: UsersService,
+    private serviceConfigs: ConfigsService,
+    private serviceAdmins: AdminsService,
+    private serviceLogs: LogsService
   ) {}
 
   data: any[] = [];
@@ -115,8 +123,23 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
     }
   };
 
+  public configCount: number = 0;
+  public avgBackup: string = ""
+  public avgConfigs: number = 0.0;
+  public onlineUsers: string = "0/0";
+  public unverifiedUsers: number = 0;
+
   ngOnInit(): void {
     this.setData();
+    
+    this.serviceUsers.GetOnlineUsers().subscribe(a => this.onlineUsers = a);
+    this.serviceUsers.GetUnverifiedUsers().subscribe(a => this.unverifiedUsers = a);
+
+    this.serviceConfigs.GetCount().subscribe(a => this.configCount = a);
+    this.serviceConfigs.GetAvgBackup().subscribe(a => this.avgBackup = a);
+    this.serviceConfigs.GetAvgConfigs().subscribe(a => this.avgConfigs = a);
+    
+
   }
 
   ngAfterContentInit(): void {

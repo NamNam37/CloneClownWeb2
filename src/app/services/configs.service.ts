@@ -14,6 +14,18 @@ export class ConfigsService {
 
   constructor(private http: HttpClient) { }
 
+  public GetCount(): Observable<number> {
+    return this.http.get<number>(environment.api + '/api/configs/dashboard/config-count');
+  }
+
+  public GetAvgBackup(): Observable<string> {
+    return this.http.get(environment.api + '/api/configs/dashboard/average-last-backup', {responseType: 'text'});
+  }
+
+  public GetAvgConfigs(): Observable<number> {
+    return this.http.get<number>(environment.api + '/api/configs/dashboard/avg-configs');
+  }
+  
   public findAll(): Observable<Configs[]> {
     return this.http.get<Configs[]>(environment.api + '/api/configs');
   }

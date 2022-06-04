@@ -1,87 +1,83 @@
-<c-row _ngcontent-msa-c210="" _nghost-msa-c119="" class="row">
-  <c-col _ngcontent-msa-c210="" sm="6" xl="3" _nghost-msa-c117="" ng-reflect-sm="6" ng-reflect-xl="3"
-    class="col-sm-6 col-xl-3">
-    <c-card _ngcontent-msa-c210="" color="success" class="mb-3 bg-success card" ng-reflect-color="success">
-      <c-card-header _ngcontent-msa-c210="" class="card-header">
-        <h5 _ngcontent-msa-c210="">Users</h5>
+<c-row _nghost-msa-c119="" class="row">
+  <c-col sm="6" xl="3" _nghost-msa-c117="" ng-reflect-sm="6" ng-reflect-xl="3" class="col-sm-6 col-xl-3">
+    <c-card color="success" class="mb-3 bg-success card" ng-reflect-color="success">
+      <c-card-header class="card-header">
+        <h5>Users</h5>
       </c-card-header>
-      <c-card-body _ngcontent-msa-c210="" class="bg-gradient card-body">
-        <h6 _ngcontent-msa-c210="" ccardtitle="" class="card-title">Online Users: 30/42</h6>
-        <div _ngcontent-msa-c210="" class="item">
-          <p _ngcontent-msa-c210="" ccardtext="" class="card-text"> Average Time Spent Online Users: </p>
-          <p _ngcontent-msa-c210="" ccardtext="" class="card-text"> 27 </p>
+      <c-card-body class="bg-gradient card-body">
+        <h6 ccardtitle="" class="card-title">Online Users: {{onlineUsers}}</h6>
+        <div class="item">
+          <p class="card-text"> Unverified Users: </p>
+          <p class="card-text"> {{unverifiedUsers}} </p>
         </div>
-        <div _ngcontent-msa-c210="" class="item">
-          <p _ngcontent-msa-c210="" ccardtext="" class="card-text"> Average Time Spent Online: </p>
-          <p _ngcontent-msa-c210="" ccardtext="" class="card-text"> 5 hours and 18 minutes </p>
+        <div class="item">
+          <p class="card-text"> Average Time Spent Online: </p>
+          <p class="card-text"> 5 hours and 18 minutes </p>
         </div>
       </c-card-body>
-      <c-card-footer _ngcontent-msa-c210="" class="card-footer"><a _ngcontent-msa-c210="" color="success" cbutton=""
-          class="shadow btn btn-success" ng-reflect-color="success" type="button" routerLink="/users">View All Users</a>
+      <c-card-footer class="card-footer"><a color="success" cbutton="" class="shadow btn btn-success"
+          ng-reflect-color="success" type="button" routerLink="/users">View All Users</a>
       </c-card-footer>
     </c-card>
   </c-col>
-  <c-col _ngcontent-msa-c210="" sm="6" xl="3" _nghost-msa-c117="" ng-reflect-sm="6" ng-reflect-xl="3"
-    class="col-sm-6 col-xl-3">
-    <c-card _ngcontent-msa-c210="" color="info" class="mb-3 bg-info card" ng-reflect-color="info">
-      <c-card-header _ngcontent-msa-c210="" class="card-header">
-        <h5 _ngcontent-msa-c210="">Configurations</h5>
+  <c-col sm="6" xl="3" _nghost-msa-c117="" ng-reflect-sm="6" ng-reflect-xl="3" class="col-sm-6 col-xl-3">
+    <c-card color="info" class="mb-3 bg-info card" ng-reflect-color="info">
+      <c-card-header class="card-header">
+        <h5>Configurations</h5>
       </c-card-header>
-      <c-card-body _ngcontent-msa-c210="" class="bg-gradient card-body">
-        <h6 _ngcontent-msa-c210="" ccardtitle="" class="card-title">Count: 48</h6>
-        <div _ngcontent-msa-c210="" class="item">
-          <p _ngcontent-msa-c210="" ccardtext="" class="card-text"> Average Time Since Last Backup: </p>
-          <p _ngcontent-msa-c210="" ccardtext="" class="card-text"> 5 days and 13 hours </p>
+      <c-card-body class="bg-gradient card-body">
+        <h6 ccardtitle="" class="card-title">Count: {{configCount}}</h6>
+        <div class="item">
+          <p class="card-text"> Average Time Since Last Backup: </p>
+          <p class="card-text"> {{avgBackup}} </p>
         </div>
-        <div _ngcontent-msa-c210="" class="item">
-          <p _ngcontent-msa-c210="" ccardtext="" class="card-text"> Average Used Configs per User: </p>
-          <p _ngcontent-msa-c210="" ccardtext="" class="card-text"> 1.14 </p>
+        <div class="item">
+          <p class="card-text"> Average Used Configs Per User: </p>
+          <p class="card-text"> {{avgConfigs}} </p>
         </div>
       </c-card-body>
-      <c-card-footer _ngcontent-msa-c210="" class="card-footer"><a _ngcontent-msa-c210="" color="info" cbutton=""
-          class="shadow btn btn-info" ng-reflect-color="info" type="button" routerLink="/configs">View All
+      <c-card-footer class="card-footer"><a color="info" cbutton="" class="shadow btn btn-info" ng-reflect-color="info"
+          type="button" routerLink="/configs">View All
           Configurations</a>
       </c-card-footer>
     </c-card>
   </c-col>
-  <c-col _ngcontent-msa-c210="" sm="6" xl="3" _nghost-msa-c117="" ng-reflect-sm="6" ng-reflect-xl="3"
-    class="col-sm-6 col-xl-3">
-    <c-card _ngcontent-msa-c210="" color="danger" class="mb-3 bg-danger card" ng-reflect-color="danger">
-      <c-card-header _ngcontent-msa-c210="" class="card-header">
-        <h5 _ngcontent-msa-c210="">Mails</h5>
+  <c-col sm="6" xl="3" _nghost-msa-c117="" ng-reflect-sm="6" ng-reflect-xl="3" class="col-sm-6 col-xl-3">
+    <c-card color="danger" class="mb-3 bg-danger card" ng-reflect-color="danger">
+      <c-card-header class="card-header">
+        <h5>Mails</h5>
       </c-card-header>
-      <c-card-body _ngcontent-msa-c210="" class="bg-gradient card-body">
-        <h6 _ngcontent-msa-c210="" ccardtitle="" class="card-title"> Sent Emails to Admin: 4</h6>
-        <div _ngcontent-msa-c210="" class="item">
-          <p _ngcontent-msa-c210="" ccardtext="" class="card-text"> Admin has Configured his Email: </p>
-          <p _ngcontent-msa-c210="" ccardtext="" class="card-text"> true </p>
+      <c-card-body class="bg-gradient card-body">
+        <h6 ccardtitle="" class="card-title"> Sent Emails to Admin: 4</h6>
+        <div class="item">
+          <p class="card-text"> Admin has Configured His Email: </p>
+          <p class="card-text"> true </p>
         </div>
-        <div _ngcontent-msa-c210="" class="item">
-          <p _ngcontent-msa-c210="" ccardtext="" class="card-text"> Next Report in: </p>
-          <p _ngcontent-msa-c210="" ccardtext="" class="card-text"> 5 days and 3 hours </p>
+        <div class="item">
+          <p class="card-text"> Next Report in: </p>
+          <p class="card-text"> 5 days and 3 hours </p>
         </div>
       </c-card-body>
-      <c-card-footer _ngcontent-msa-c210="" class="card-footer"><a _ngcontent-msa-c210="" color="danger" cbutton=""
-          class="shadow btn btn-danger" ng-reflect-color="danger" type="button" routerLink="/mails">Configure Email
+      <c-card-footer class="card-footer"><a color="danger" cbutton="" class="shadow btn btn-danger"
+          ng-reflect-color="danger" type="button" routerLink="/mails">Configure Email
           Reports</a>
       </c-card-footer>
     </c-card>
   </c-col>
-  <c-col _ngcontent-msa-c210="" sm="6" xl="3" _nghost-msa-c117="" ng-reflect-sm="6" ng-reflect-xl="3"
-    class="col-sm-6 col-xl-3">
-    <c-card _ngcontent-msa-c210="" color="primary" class="mb-3 bg-primary card" ng-reflect-color="primary">
-      <c-card-header _ngcontent-msa-c210="" class="card-header">
-        <h5 _ngcontent-msa-c210="">Logs</h5>
+  <c-col sm="6" xl="3" _nghost-msa-c117="" ng-reflect-sm="6" ng-reflect-xl="3" class="col-sm-6 col-xl-3">
+    <c-card color="primary" class="mb-3 bg-primary card" ng-reflect-color="primary">
+      <c-card-header class="card-header">
+        <h5>Logs</h5>
       </c-card-header>
-      <c-card-body _ngcontent-msa-c210="" class="bg-gradient card-body">
-        <h6 _ngcontent-msa-c210="" ccardtitle="" class="card-title">Count: 114</h6>
-        <div _ngcontent-msa-c210="" class="item">
-          <p _ngcontent-msa-c210="" ccardtext="" class="card-text"> Success Rate: </p>
-          <p _ngcontent-msa-c210="" ccardtext="" class="card-text"> 93% </p>
+      <c-card-body class="bg-gradient card-body">
+        <h6 ccardtitle="" class="card-title">Count: 114</h6>
+        <div class="item">
+          <p class="card-text"> Success Rate: </p>
+          <p class="card-text"> 93% </p>
         </div>
       </c-card-body>
-      <c-card-footer _ngcontent-msa-c210="" class="card-footer"><a _ngcontent-msa-c210="" color="primary" cbutton=""
-          class="shadow btn btn-primary" ng-reflect-color="primary" type="button" routerLink="/logs">View All Logs</a>
+      <c-card-footer class="card-footer"><a color="primary" cbutton="" class="shadow btn btn-primary"
+          ng-reflect-color="primary" type="button" routerLink="/logs">View All Logs</a>
       </c-card-footer>
     </c-card>
   </c-col>

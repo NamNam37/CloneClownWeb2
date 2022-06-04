@@ -13,6 +13,14 @@ export class UsersService {
   ];
 
   constructor(private http: HttpClient) { }
+  
+  public GetOnlineUsers(): Observable<string> {
+    return this.http.get(environment.api + '/api/users/dashboard/online-users', {responseType: 'text'});
+  }
+
+  public GetUnverifiedUsers(): Observable<number> {
+    return this.http.get<number>(environment.api + '/api/users/dashboard/unverified-users');
+  }
 
   public findAll(): Observable<Users[]> {
     return this.http.get<Users[]>(environment.api + '/api/users');
