@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Configs } from 'src/app/models/configs.model';
 import { LogsService } from 'src/app/services/logs.service';
 import {Logs} from "../../models/logs.model";
 
@@ -18,6 +19,12 @@ export class LogsTableComponent implements OnInit {
   constructor(private service: LogsService) { }
 
   ngOnInit(): void {
+    this.logs.forEach(a => {
+      if(a.configID === null)
+        a.config = new Configs();
+        a.config.configName = "null";
+
+    })
   }
 
   public view(log: Logs): void {

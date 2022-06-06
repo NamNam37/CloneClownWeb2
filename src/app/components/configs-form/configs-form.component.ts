@@ -80,14 +80,38 @@ export class ConfigsFormComponent implements OnInit {
     let source = new SourceF();
     source.path = path;
     source.configID = this.config.id;
-    this.config.sources.push(source);
+    if(this.CheckDupsSource(source.path))
+    {
+      this.config.sources.push(source);
+    }
   }
   public AddDest(path: string): void {
     let dest = new DestF();
     dest.path = path;
     dest.configID = this.config.id;
     dest.type = 'local';
-    this.config.dests.push(dest);
+    if(this.CheckDupsDest(dest.path))
+    {
+      this.config.dests.push(dest);
+    }
+  }
+
+  private CheckDupsSource(path: string): boolean {
+    let dups = this.config.sources.filter(a => a.path === path)
+    console.log(dups)
+    if(dups.length > 0 || path == "") {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  private CheckDupsDest(path: string): boolean {
+    let dups = this.config.dests.filter(a => a.path === path)
+    if(dups.length > 0 || path == "") {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   constructor(private service: ConfigsService,
