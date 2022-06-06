@@ -32,8 +32,8 @@ export class ConfigsCreatorComponent implements OnInit {
   private createForm(): FormGroup {
     return this.fb.group({
       configName: "default",
-      packageCount: 0,
-      backupCount: 0,
+      packageCount: 3,
+      backupCount: 3,
       isZIP: false
     });
   }
